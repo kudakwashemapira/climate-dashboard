@@ -1,0 +1,35 @@
+{
+    "name": "Climate Dashboard",
+    "short_name": "Climate",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#1F3864",
+    "theme_color": "#1F3864",
+    "description": "Climate Dashboard station app (simulation on the pilot API)",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

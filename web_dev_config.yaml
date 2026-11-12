@@ -1,0 +1,15 @@
+# The Flutter web dev server (flutter run -d chrome), development only.
+# The app in the browser calls /api/ on its own address; the dev server forwards those calls to the
+# backend of docker compose on port 8000. The browser therefore makes no cross-origin request and
+# the backend needs no CORS setting.
+#
+# No port is fixed here. A fixed port made a plain "flutter run" stop with "Failed to bind web
+# development server ... port = 8083" whenever that port was taken, often by an earlier dev server
+# still running: Flutter does not try another port. Without one, a plain "flutter run" takes a free
+# port and opens the browser on it; the forwarding works on any port. run.ps1 asks for 8083
+# (--web-port), next to the two web apps (8081, 8082), and frees it or moves on when it is taken.
+server:
+  host: localhost
+  proxy:
+    - prefix: "/api/"
+      target: "http://localhost:8000"
