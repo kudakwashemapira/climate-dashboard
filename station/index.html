@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Climate Dashboard: Station application of the Climate and Environmental Monitoring Dashboard." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Climate Dashboard - Station</title>
+    <script>
+      // Apply the saved or system theme before the first paint, so there is no flash.
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem("climate.theme"); } catch (e) { /* storage unavailable */ }
+        var dark = saved === "dark" || (saved !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

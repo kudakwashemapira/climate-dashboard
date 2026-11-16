@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens (CD-3.05 section 5). Every text colour below was checked for a contrast of at
+   least 4.5 to 1 on the surface it is used on, in both themes (WCAG 2.1 AA). */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --c-page: 243 245 249;
+  --c-surface: 255 255 255;
+  --c-subtle: 238 241 246;
+  --c-line: 221 226 234;
+  --c-line-strong: 138 148 166;
+  --c-ink: 15 27 51;
+  --c-ink-2: 68 81 106;
+  --c-muted: 95 107 128;
+  --c-accent: 46 85 151;
+  --c-on-accent: 255 255 255;
+  --c-sidebar: 31 56 100;
+  --c-sidebar-muted: 185 198 224;
+  --c-sidebar-ink: 255 255 255;
+  --c-sidebar-accent: 62 84 122; /* the open and hovered screen: white at 14% over the navy */
+  --c-sidebar-border: 54 77 116;
+  --c-good: 23 105 46;
+  --c-good-tint: 230 244 234;
+  --c-warn: 122 79 0;
+  --c-warn-tint: 255 243 209;
+  --c-crit: 180 35 24;
+  --c-crit-tint: 253 236 234;
+  --c-info: 35 74 140;
+  --c-info-tint: 230 238 251;
+  --c-neutral: 68 81 106;
+  --c-neutral-tint: 238 241 246;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --c-page: 11 18 32;
+  --c-surface: 19 28 46;
+  --c-subtle: 26 37 64;
+  --c-line: 38 50 74;
+  --c-line-strong: 93 107 133;
+  --c-ink: 232 237 245;
+  --c-ink-2: 182 192 210;
+  --c-muted: 142 155 178;
+  --c-accent: 143 176 238;
+  --c-on-accent: 11 18 32;
+  --c-sidebar: 14 22 38;
+  --c-sidebar-muted: 154 168 196;
+  --c-sidebar-ink: 232 237 245;
+  --c-sidebar-accent: 43 50 64;
+  --c-sidebar-border: 39 45 60;
+  --c-good: 126 224 138;
+  --c-good-tint: 20 51 33;
+  --c-warn: 240 200 103;
+  --c-warn-tint: 61 47 11;
+  --c-crit: 255 180 171;
+  --c-crit-tint: 74 29 26;
+  --c-info: 179 203 245;
+  --c-info-tint: 28 47 85;
+  --c-neutral: 195 204 219;
+  --c-neutral-tint: 35 47 73;
+}
+
+@layer base {
+  body {
+    @apply bg-page font-sans text-sm text-ink antialiased;
+  }
+  /* A visible focus ring on every control, for keyboard users. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-accent));
+    outline-offset: 2px;
+  }
+  /* Columns of numbers line up; large standalone figures keep proportional digits. */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Buttons, dialogs, menus, pick lists, tables, tabs, toasts and the sidebar are shadcn/ui components
+   (src/components/shadcn). A text box written as <input className="input"> looks like their Input. */
+@layer components {
+  .input {
+    @apply block min-h-[36px] w-full rounded-md border border-input bg-background px-3 py-1.5 text-sm text-ink shadow-sm transition-colors placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:bg-subtle disabled:text-muted;
+  }
+  .input-error {
+    @apply border-crit focus-visible:ring-crit;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold text-ink-2;
+  }
+  .card {
+    @apply rounded-lg border border-line bg-surface shadow-card;
+  }
+}
